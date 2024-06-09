@@ -1,0 +1,38 @@
+<!-- //injecting react -->
+<!-- //so browsers have javascript engine so it understands javascript but browsers dont have react and we need to inject that -->
+<!-- first way is using cdn this is a website where the react library is hosted go to cdn copy paste tose 2 script links in body tag-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- this will provide you the core react (plain javascript code) written by facebook so if you run this file and in console if you type react you will see all the functions/methods provided by react -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- since react not only works on browsers but have in our mobiles using react native in our watches so that is we need different variant of react and that is why we need line 14-->
+<!-- if you write in console REACTDOM you will see various functions/methods that react dom provides us -->
+
+
+
+<!-- Rendering things in browser using react -->
+<!-- step 1 we need to create the element -->
+<!-- <script>
+    const heading=React.createElement("h1",{},"Hello from React!!!");
+    // so this contains three arguments first the element that we want to create second an empty object and third is what we want to show
+    // now second step is to create a root inside which everything will be rendered and this is the work od DOM and we have to create it in the root dic 
+    const root=ReactDOM.createRoot(doocument.getElementById("root"));
+    //and now we can render our heading inside this root
+    root.render(heading);
+</script> -->
+
+<!-- now lets just put this code in a seperate js file and then use it here -->
+<!-- <script src="./App4.js"></script> -->
+<script src="./App5.js"></script>
+</body>
+
+</html>
