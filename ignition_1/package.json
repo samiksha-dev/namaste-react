@@ -1,0 +1,34 @@
+{
+  "name": "react_ignition_1",
+  "version": "1.0.0",
+  "description": "we are creating npm on our system",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samiksha-dev/namaste-react.git"
+  },
+  "keywords": [
+    "react",
+    "learn",
+    "react"
+  ],
+  "author": "Samiksha Sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samiksha-dev/namaste-react/issues"
+  },
+  "homepage": "https://github.com/samiksha-dev/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browserlist":[
+    "last 2 versions"
+]
+}

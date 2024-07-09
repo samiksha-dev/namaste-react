@@ -1,0 +1,60 @@
+//npm does not stand for node package module and it manages the packages/dependencies or utilities behind the scene but it does not stand for node package module and where does this npm takes care of these dependencies in package.json
+
+//package.json is a configuration for npm and we can even create npm on our system by writing npm init and then following the steps as needed
+
+
+//bundlers-so when you have css html js file in your program you need to bundle them clean/cache/compress them before pushing into production so this is the job of bundlers eg. are =webpack,wheat,parcel even create-react-app uses these bundlers we will be using parcel to install parcel command is npm install -D parcel
+//now you may think what is this -D so our programs can have two kind of dependencies one is the dev dependencies(required when we are developing) and other is the normal(we even need these dependencies in our production) so for dev dependencies we need -D and so tobundle our code we need to do it in development phase so after writing the command our app is installing parcel from npm  so now if you see in package.json you will have a dev dependency with parcel so when you will have parcel in package.json you will see
+^2.12.0 so ^ this is known as caret so what will it do so may be tomorrow the version comes 2.13.0 it will automatically upgrade our old version to new
+we can even have ~2.12.0 ~ this is known as tilde so may be tomorrow we get a major version change 3.00.0 it will automatically install that major difference between caret and tilde is that caret installs minor version upgrades like 2.12 to 2.13 which is safe and will not break anything in our app but tilde install major version upgrade if any occurs
+and this may impact our app also observe that when we install this parcel we got a file package-lock.json so in future whenever there is any upgrade to any dependencies package-lock.json will keep a track of those no change to package.json will happen but any upgrade which happened to any dependencies which are installed package-lock.json will keep a track of it like currently version is ^2.12.0 in package.json for parcel but if you go and check "parcel" the version will be 2.12.0 without caret that is exact version of parcel so package-lock.json will keep exact version of dependencies in it without caret or tilde
+okay you will also see integrity in parcel so sometimes ppl say na that the code was working in my local but not working on production so integrity keeps that integrity value so that we can match the same value to which is deployed on production and check
+
+
+//now when we installed parcel we got one more folder which is node_modules-it is kind of a database for all the packages that our code needs,basically fetches all the code of all dependencies that our code needs from npm but you might think that u just installed parcel but are these other things that came but you installed parcel becuasse you needed those dependencies but parcel itself even needs some dependencies to work and those depedencies may be also dependent on other dependencies this is know as transitive dependency
+now someone may ask how many package.json and package-lock.json can a project have we cant tell becuase if you go inside nodemodules and you open folders you will see every folder has there package.json eg. you can check parcel folder
+
+//so if you see the size of node modules is very big and this doesnt needs to be send to production or git
+//hence we keep nodemodules in .gitignore file so that git ignores it you just write there in /node_modules why dont we need node modules since we have package.json and package-lock.json and through this we can retreive my node modules since they keep a track of the dependencies just do npm install so whatever you can regenerate dont put on git or production
+
+
+//now if you write in termainal npx parcel index.html-this will host our code on a server you will see a localhost on which parcel hosted our code
+//difference between npm and npx is when you are installing something you write npm and when you need to execute something or dependency you write npx
+//now in inception we bought react using cdn links which is not correct way on of the reason is if you observe the link it has react 18 now what if tomorrow react 19 comes so what you will keep on updating so no we have react in our node modules in our package.json so you need react and react dom so just write npm i react and npm i react-dom now you wull see this in package.json package-lock.json and in node modules now if you run your server npx parcel index.html it will say in console React is not defined so our project is not understanding where this react is coming from initially we used cdn links so it knew but now we have to import it that is why we write import React from 'react' which means import it from nodemodules now if you change anything in your code your browser will automatically refresh and will take those changes and this is done by parcel which is known as HMR(Hot module replacement) and how parcel does this by using File watching algorithm which is written by c++,also each time you make changes teh build will take less time than previous because pracel caches things which results into fasters builds you will see a folder parcel-cache,parcel even does image optimization,it also does minification/bundling of our file and it will also compress our files and ship it on our production
+
+--so parcel does
+//Dev builds
+//Local Server
+//HMR=Hot module replacement
+//File watching algorithm
+//caching-faster builds-dev server restarts instantly and the same code is never built twice
+//image optimizatiom
+//bundling
+//compressing
+//consistent hashing
+//code splitting
+//diffrential bundling-i.e my app will work on internet explorer its older version,morzilla chrome so parcel helps to configure our apps in older browser does diffrential bundling
+//right now our aap is hosted on http but it also gives capability to host it on https
+//Error handling
+//Tree shakinh-remove unused code
+//diffrent dev and prod build and bundles
+//for doing a production build comment is npx parcel build index.html but when you write this you will get an error becausse we are writing that our entry point should be index.html but if you go in package.json you will lsee "main":"App.js" which means the entry point here is App.js hence a conflict will be created so you should remove this
+
+
+//so not only react makes our app faster it has parcel and other packages which helps it to be faster
+//when you did npx parcel index.html it generates a development build of our project and it hosted it on localhost1234 and when it generates a dev build it puts it in dist folder
+//so the rendered code that you see on browser is coming from dist and when you refresh your page parcel uses parcel-cache and dist to update your code now if you do a production build
+//npx parcel build index.html it will create a prod build inside dist and also you can delete dist since it can be reproduce so if you now do npx parcel build index.html you will see a 
+new dist and it take more time than dev build if you see in that you will have comapressed index.html intex.js and index.css file
+
+//note parcel-cache and dist can be reproduced so dont put in ==on git so put the address of this file in gitignore
+//now you have to tell your app on which all o=versions it should be comaptible on which is done by browserslist in package.json
+//so you can write in pacakge.json
+"browserlist":[
+    "last 2 Chrome version",
+    "last 2 Firefox version",
+    "last 2 versions"//means on all last 2 versions of every browser
+]
+
+so does it mean it will not work in internet explorer no by this we only mean that it should definitely work on last2 chrome and last 2 firefox versions
+//even you can write it should work for 95% usa ppl go to browserlist.dev you can find everything there
